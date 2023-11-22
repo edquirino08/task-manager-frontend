@@ -1,9 +1,10 @@
-import { useState } from 'react';
-import './App.css';
-import TaskManager from './components/TaskManager';
-import TaskManagerForm from "./components/TaskManagerForm";
+import { useState } from "react";
+import TaskManager from "../components/TaskManager";
+import TaskManagerForm from "../components/TaskManagerForm";
+import "../css/App.css";
 
 function App() {
+  document.title ="Task Manager";
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -26,9 +27,9 @@ function App() {
   ]);
 
   return (
-    <div className='app'>
+    <div className="app">
       <h1>Lista de Tarefas</h1>
-      <div className='todo-list'>
+      <div className="todo-list">
         {todos.map((todo) => (
           <TaskManager key={todo.id} todo={todo} />
         ))}
