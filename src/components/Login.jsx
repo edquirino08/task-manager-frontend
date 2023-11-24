@@ -1,33 +1,32 @@
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import React, { useState } from "react";
 import iconImage from "../img/teste.png";
 import api from "../services/api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState(false);
 
-  function handleLogin(event) {
+
+
+  const handleLogin = async (event) => {
     event.preventDefault();
-    const data = {
-      email: email,
-      password: password
-    };
 
-    api.post('/login', data)
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.error(err);
-        alert('Erro ao realizar login');
-      });
-  }
-
+    try {
+      const data = { email, password };
+      await api.post('/login', data);
+    } catch (error) {
+      console.error(error);
+      setLoginError(true);
+      setPassword("");
+      setTimeout(() => setLoginError(false), 10000);
+    }
+  };
 
   return (
     <Grid container justifyContent="center" alignItems="center" height="100vh">
@@ -61,18 +60,8 @@ const Login = () => {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            InputProps={{
-              style: {
-                fontSize: "14px",
-                marginTop: "8px", // Espaçamento acima do input
-              },
-            }}
-            InputLabelProps={{
-              style: {
-                fontSize: "14px",
-                marginTop: "8px", // Espaçamento acima do label
-              },
-            }}
+            InputProps={{ style: { fontSize: "14px", marginTop: "8px" } }}
+            InputLabelProps={{ style: { fontSize: "14px", marginTop: "8px" } }}
           />
           <TextField
             type="password"
@@ -83,18 +72,8 @@ const Login = () => {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            InputProps={{
-              style: {
-                fontSize: "14px",
-                marginTop: "8px", // Espaçamento acima do input
-              },
-            }}
-            InputLabelProps={{
-              style: {
-                fontSize: "14px",
-                marginTop: "8px", // Espaçamento acima do label
-              },
-            }}
+            InputProps={{ style: { fontSize: "14px", marginTop: "8px" } }}
+            InputLabelProps={{ style: { fontSize: "14px", marginTop: "8px" } }}
           />
           <Button
             variant="contained"
@@ -105,6 +84,19 @@ const Login = () => {
           >
             Login
           </Button>
+          {loginError && (
+            <div style={{
+              backgroundColor: "#FFEBEE",
+              color: "#D32F2F",
+              padding: "10px",
+              borderRadius: "5px",
+              textAlign: "center",
+              marginBottom: "10px",
+              boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+            }}>
+              Erro ao realizar login. Verifique suas credenciais.
+            </div>
+          )}
         </form>
       </Paper>
     </Grid>
