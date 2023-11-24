@@ -4,7 +4,6 @@ import TaskManagerForm from "../components/TaskManagerForm";
 import "../css/App.css";
 
 function App() {
-  document.title ="Task Manager";
   const [todos, setTodos] = useState([
     {
       id: 1,
