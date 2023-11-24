@@ -4,7 +4,7 @@ import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
-import iconImage from "../img/icon.png";
+import iconImage from "../img/teste.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -43,17 +43,8 @@ const Login = () => {
           <img
             src={iconImage}
             alt="Login"
-            style={{ marginBottom: "0.2em", width: "100px", height: "100px" }}
+            style={{ marginBottom: "0.2em" }}
           />
-          <h1
-            style={{
-              fontSize: "1.5em",
-              fontWeight: "bold",
-              letterSpacing: "1px",
-            }}
-          >
-            Task Manager
-          </h1>
         </Typography>
         <form>
           <TextField
@@ -68,7 +59,7 @@ const Login = () => {
           />
           <TextField
             type="password"
-            label="Password"
+            label="Senha"
             variant="outlined"
             fullWidth
             margin="normal"
