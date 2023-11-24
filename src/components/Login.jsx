@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import iconImage from "../img/teste.png";
-import api from "../services/api";
+import api from "../services/Api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
