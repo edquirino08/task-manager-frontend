@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import iconImage from "../img/teste.png";
+import api from "../services/api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,18 +13,21 @@ const Login = () => {
 
   function handleLogin(event) {
     event.preventDefault();
+    const data = {
+      email: email,
+      password: password
+    };
 
-    // Simulando uma verificação de login bem-sucedida
-    if (email === "seuemail@example.com" && password === "suasenha") {
-      alert("Login bem-sucedido!");
-
-      // Limpar os campos de entrada
-      setEmail("");
-      setPassword("");
-    } else {
-      alert("Credenciais inválidas. Tente novamente.");
-    }
+    api.post('/login', data)
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.error(err);
+        alert('Erro ao realizar login');
+      });
   }
+
 
   return (
     <Grid container justifyContent="center" alignItems="center" height="100vh">
@@ -33,6 +37,7 @@ const Login = () => {
           padding: 3,
           borderRadius: 8,
           backgroundColor: "rgba(255, 255, 255, 0.8)",
+          maxWidth: 400,
         }}
       >
         <Typography
@@ -43,7 +48,7 @@ const Login = () => {
           <img
             src={iconImage}
             alt="Login"
-            style={{ marginBottom: "0.2em" }}
+            style={{ marginBottom: "0.2em", width: "50%" }}
           />
         </Typography>
         <form>
@@ -56,6 +61,18 @@ const Login = () => {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            InputProps={{
+              style: {
+                fontSize: "14px",
+                marginTop: "8px", // Espaçamento acima do input
+              },
+            }}
+            InputLabelProps={{
+              style: {
+                fontSize: "14px",
+                marginTop: "8px", // Espaçamento acima do label
+              },
+            }}
           />
           <TextField
             type="password"
@@ -66,10 +83,22 @@ const Login = () => {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            InputProps={{
+              style: {
+                fontSize: "14px",
+                marginTop: "8px", // Espaçamento acima do input
+              },
+            }}
+            InputLabelProps={{
+              style: {
+                fontSize: "14px",
+                marginTop: "8px", // Espaçamento acima do label
+              },
+            }}
           />
           <Button
             variant="contained"
-            style={{ backgroundColor: "#4CAF50", color: "#fff" }}
+            style={{ backgroundColor: "#4CAF50", color: "#fff", marginTop: 2 }}
             fullWidth
             type="submit"
             onClick={handleLogin}
