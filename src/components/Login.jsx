@@ -1,9 +1,10 @@
-import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import iconImage from "../img/teste.png";
 import api from "../services/api";
 
@@ -12,14 +13,15 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState(false);
 
-
+  const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     event.preventDefault();
 
     try {
       const data = { email, password };
-      await api.post('/login', data);
+      await api.post("/login", data);
+      navigate("/dashboard");
     } catch (error) {
       console.error(error);
       setLoginError(true);
@@ -85,15 +87,17 @@ const Login = () => {
             Login
           </Button>
           {loginError && (
-            <div style={{
-              backgroundColor: "#FFEBEE",
-              color: "#D32F2F",
-              padding: "10px",
-              borderRadius: "5px",
-              textAlign: "center",
-              marginBottom: "10px",
-              boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-            }}>
+            <div
+              style={{
+                backgroundColor: "#FFEBEE",
+                color: "#D32F2F",
+                padding: "10px",
+                borderRadius: "5px",
+                textAlign: "center",
+                marginBottom: "10px",
+                boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+              }}
+            >
               Erro ao realizar login. Verifique suas credenciais.
             </div>
           )}
