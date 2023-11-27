@@ -19,9 +19,9 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const data = { email, password };
-      await api.post("/login", data);
-      navigate("/dashboard");
+      const response = await api.post("/login", { email, password });
+      const { data } = response;
+      navigate("/dashboard", { state: { userData: data } });
     } catch (error) {
       console.error(error);
       setLoginError(true);
