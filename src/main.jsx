@@ -4,20 +4,9 @@ import App from "./routes/App";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Dashborad from "./routes/Dashborad";
+import Dashboard from "./routes/Dashboard";
 import ErrorPage from "./routes/ErrorPage";
 import Login from "./routes/Login";
-
-// const router = createBrowserRouter([
-//     {
-//         path: "/login",
-//         element: <Login />
-//     },
-//     {
-//         path: "/dashboard",
-//         element: <Dashborad />
-//     }
-// ])
 
 const router = createBrowserRouter([
   {
@@ -26,12 +15,12 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        path: "/login",
         element: <Login />,
       },
       {
         path: "/dashboard",
-        element: <Dashborad />,
+        element: <Dashboard />,
       },
     ],
   },
