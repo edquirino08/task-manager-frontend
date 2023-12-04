@@ -11,10 +11,10 @@ const index = () => {
         <BrowserRouter>
             <Fragment>
                 <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route exact path="/signup" element={<Signup />} />
-                    <Route exact path="/dashboard" element={<PrivateRoute Item={Dashboard} />} />
-                    <Route path="*" element={<Login />} />
+                    <Route path='/' element={<Login />} />
+                    <Route exact path='/signup' element={<Signup />} />
+                    <Route exact path='/dashboard' element={<PrivateRoute Item={Dashboard} />} />
+                    <Route path='*' element={<Login />} />
                 </Routes>
             </Fragment>
         </BrowserRouter>
