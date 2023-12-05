@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import backgroundImage from '../img/backgorund.jpg';
+import 'typeface-roboto'; 
 
 const GlobalStyle = createGlobalStyle`
-
   * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     width: 100vw;
     height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-image: url(${backgroundImage});
     background-size: cover;
     background-position: center center;

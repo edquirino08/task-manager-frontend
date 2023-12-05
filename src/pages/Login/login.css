@@ -1,6 +1,30 @@
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+a {
+    color: #0077B5;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+    display: block;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 .paper-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc;
     background-color: #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -8,6 +32,63 @@
     margin: auto;
 }
 
-.paper-container h2 {
+.paper-container img {
     margin-bottom: 10px;
+}
+
+.mailInput,
+.passwordInput {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.mailInput:focus,
+.passwordInput:focus {
+    border-color: #0077B5;
+    box-shadow: 0 0 0 2px #E0F0FF;
+}
+
+.inputLabel {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.loginButton {
+    padding: 12px;
+    font-size: 16px;
+    background-color: #0077B5;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.loginButton:hover {
+    background-color: #005183;
+}
+
+.signupLink,
+.forgotPasswordLink {
+    color: #0077B5;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    margin-top: 10px;
+}
+
+.signupLink:hover,
+.forgotPasswordLink:hover {
+    text-decoration: underline;
 }
