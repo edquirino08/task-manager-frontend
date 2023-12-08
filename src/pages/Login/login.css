@@ -60,25 +60,6 @@ a:hover {
     margin-bottom: 5px;
 }
 
-.loginButton {
-    padding: 12px;
-    font-size: 16px;
-    background-color: #0077B5;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%;
-    box-sizing: border-box;
-    outline: none;
-    margin-bottom: 10px;
-}
-
-.loginButton:hover {
-    background-color: #005183;
-}
-
 .signupLink,
 .forgotPasswordLink {
     color: #0077B5;
@@ -91,4 +72,20 @@ a:hover {
 .signupLink:hover,
 .forgotPasswordLink:hover {
     text-decoration: underline;
+}
+
+.loginButton {
+    background-color: #0077B5;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    margin: 10px;
+    font-size: 16px;
+}
+
+.loginButton:active {
+    opacity: 0.6;
 }
