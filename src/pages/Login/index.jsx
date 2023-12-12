@@ -5,10 +5,16 @@ import LogoImg from '../../img/teste.png';
 import './login.css';
 
 const Login = () => {
-  const { signin } = useAuth();
+  const { signin, signed } = useAuth();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (signed) {
+      navigate('/dashboard');
+    }
+  }, [signed, navigate]);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -16,13 +22,14 @@ const Login = () => {
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    console.log(password);
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = signin(email, password);
-    console.log('res', res);
+    const res = await signin(email, password);
+    if (res) {
+      navigate('/dashboard');
+    }
 
   }
 

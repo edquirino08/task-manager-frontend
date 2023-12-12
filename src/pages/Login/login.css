@@ -45,7 +45,7 @@ a:hover {
     width: 100%;
     box-sizing: border-box;
     outline: none;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .mailInput:focus,
@@ -82,9 +82,10 @@ a:hover {
     border-radius: 10px;
     cursor: pointer;
     width: 100%;
-    margin: 10px;
+    margin: 0 auto;
     font-size: 16px;
 }
+
 
 .loginButton:active {
     opacity: 0.6;
