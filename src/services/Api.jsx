@@ -1,12 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 
 const api = axios.create({
     baseURL: 'https://task-manager-backend-five.vercel.app/api',
-    withCredentials: true,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  
+    // baseURL: 'http://localhost:3000/api',
+});
 
 export default api;
