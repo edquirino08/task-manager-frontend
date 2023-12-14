@@ -18,6 +18,15 @@ a:hover {
     text-decoration: underline;
 }
 
+.login-error {
+
+    color: red;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+    display: block;
+}
+
 .paper-container {
     display: flex;
     flex-direction: column;
@@ -75,7 +84,7 @@ a:hover {
 }
 
 .loginButton {
-    background-color: #0077B5;
+    background-color: #00b551;
     color: white;
     padding: 10px;
     border: none;

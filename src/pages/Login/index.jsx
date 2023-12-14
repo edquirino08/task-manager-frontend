@@ -8,6 +8,7 @@ const Login = () => {
   const { signin, signed } = useAuth();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [loginError, setLoginError] = React.useState(false);
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -18,10 +19,12 @@ const Login = () => {
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+    setLoginError(false);
   }
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+    setLoginError(false);
   }
 
   const handleSubmit = async (e) => {
@@ -29,6 +32,8 @@ const Login = () => {
     const res = await signin(email, password);
     if (res) {
       navigate('/dashboard');
+    } else {
+      setLoginError(true);
     }
 
   }
@@ -50,8 +55,8 @@ const Login = () => {
 
         <button className='loginButton'>Entrar</button>
       </form>
-
-      <a href='/cadastro'>Criar uma conta</a>
+      {loginError && <a className='login-error'>Erro! Verifique suas credenciais.</a>}
+      <a href='/signup'>Criar uma conta</a>
       <a href='/esqueceu-a-senha'>Esqueceu a senha?</a>
     </div >
   );
