@@ -8,6 +8,7 @@ const Login = () => {
   const { signin, signed } = useAuth();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [showPassword, setShowPassword] = React.useState(false);
   const [loginError, setLoginError] = React.useState(false);
   const navigate = useNavigate();
 
@@ -25,6 +26,11 @@ const Login = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
     setLoginError(false);
+  }
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+
   }
 
   const handleSubmit = async (e) => {
@@ -49,9 +55,14 @@ const Login = () => {
           onChange={handleEmailChange} />
 
         <label htmlFor='password' className='inputLabel'>Senha</label>
-        <input className='passwordInput' type='password'
+        <input className='passwordInput' type={showPassword ? 'text' : 'password'}
           value={password}
           onChange={handlePasswordChange} />
+
+        <div className='showPasswordContainer'>
+          <input type='checkbox' id='showPasswordCheckbox' onClick={togglePasswordVisibility} />
+          <label htmlFor='showPasswordCheckbox' className='inputLabelShowPassword'>Mostrar senha</label>
+        </div>
 
         <button className='loginButton'>Entrar</button>
       </form>

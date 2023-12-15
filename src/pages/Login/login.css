@@ -6,25 +6,19 @@ body {
     min-height: 100vh;
 }
 
-a {
-    color: #0077B5;
-    text-decoration: none;
-    font-size: 14px;
-    margin-top: 10px;
-    display: block;
-}
-
-a:hover {
-    text-decoration: underline;
+a,
+.login-error,
+.mailInput,
+.passwordInput,
+.inputLabel,
+.signupLink,
+.forgotPasswordLink,
+.loginButton {
+    margin: 10px 0;
 }
 
 .login-error {
-
     color: red;
-    text-decoration: none;
-    font-size: 14px;
-    margin-top: 10px;
-    display: block;
 }
 
 .paper-container {
@@ -38,11 +32,9 @@ a:hover {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-width: 400px;
+    width: 100%;
     margin: auto;
-}
-
-.paper-container img {
-    margin-bottom: 10px;
+    height: 100%;
 }
 
 .mailInput,
@@ -57,31 +49,24 @@ a:hover {
     margin-bottom: 20px;
 }
 
-.mailInput:focus,
-.passwordInput:focus {
-    border-color: #0077B5;
-    box-shadow: 0 0 0 2px #E0F0FF;
+.showPasswordContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: grey;
 }
 
-.inputLabel {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
+.inputLabelShowPassword {
+    margin-left: 5px;
 }
 
 .signupLink,
 .forgotPasswordLink {
-    color: #0077B5;
-    text-decoration: none;
-    font-size: 14px;
-    display: block;
     margin-top: 10px;
 }
 
-.signupLink:hover,
-.forgotPasswordLink:hover {
-    text-decoration: underline;
-}
 
 .loginButton {
     background-color: #00b551;
@@ -91,7 +76,6 @@ a:hover {
     border-radius: 10px;
     cursor: pointer;
     width: 100%;
-    margin: 0 auto;
     font-size: 16px;
 }
 
