@@ -59,10 +59,10 @@ const Login = () => {
           value={password}
           onChange={handlePasswordChange} />
 
-        <div className='showPasswordContainer'>
+        {/* <div className='showPasswordContainer'>
           <input type='checkbox' id='showPasswordCheckbox' onClick={togglePasswordVisibility} />
           <label htmlFor='showPasswordCheckbox' className='inputLabelShowPassword'>Mostrar senha</label>
-        </div>
+        </div> */}
 
         <button className='loginButton'>Entrar</button>
       </form>

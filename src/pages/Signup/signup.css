@@ -8,4 +8,27 @@ body {
 
 .title {
     color: grey;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.nameInput,
+.mailInput,
+.passwordInput {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+.inputLabel {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    text-align: left;
 }
