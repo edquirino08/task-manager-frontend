@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import 'typeface-roboto'; 
+import 'typeface-roboto';
 
 const GlobalStyle = createGlobalStyle`
   * {
