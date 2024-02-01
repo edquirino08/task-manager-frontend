@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import LogoImg from '../../img/teste.png';
 import Input from '../../components/Input';
+import Button from '../../components/Button';
 import PasswordInput from '../../components/PasswordInput';
 import './login.css';
 
@@ -10,8 +11,8 @@ const Login = () => {
   const { signin, signed } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState(false);
+  const [isButtonClickable, setIsButtonClickable] = useState(false);
 
   const navigate = useNavigate();
 
@@ -20,6 +21,10 @@ const Login = () => {
       navigate('/dashboard');
     }
   }, [signed, navigate]);
+
+  useEffect(() => {
+    setIsButtonClickable(email.trim() !== '' && password.trim() !== '');
+  }, [email, password]);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -55,7 +60,11 @@ const Login = () => {
         <PasswordInput
           onChange={handlePasswordChange} />
         {loginError && <a className='login-error'>Erro! Verifique suas credenciais.</a>}
-        <button type='submit'>Entrar</button>
+        <Button
+          value={'Entrar'}
+          type={'submit'}
+          disabled={!isButtonClickable}
+        />
       </form >
     </div >
   );
