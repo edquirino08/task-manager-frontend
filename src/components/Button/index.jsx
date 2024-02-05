@@ -12,7 +12,7 @@ const index = ({ value, type, placeholder, onChange, disabled }) => {
                     onChange={onChange}
                     disabled={disabled}
                     className='button-field'
-                    style={{ opacity: disabled ? 0.6 : 1,  cursor: disabled ? 'default' : 'pointer'}}
+                    style={{ opacity: disabled ? 0.7 : 1,  cursor: disabled ? 'default' : 'pointer'}}
                 />
             </div>
         </div>

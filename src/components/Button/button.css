@@ -1,16 +1,16 @@
-/* button.css */
-
 .button-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    margin-top: 0px;
+    margin-bottom: -25px;
 }
 
 .button-field {
-    padding: 10px 105px;
+    width: 252px;
+    padding: 10px;
     font-size: 16px;
-    background-color: #8aff8a;
+    background-color: #16e438fc;
     border: none;
     border-radius: 5px;
     cursor: pointer;

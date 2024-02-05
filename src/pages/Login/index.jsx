@@ -64,7 +64,11 @@ const Login = () => {
           value={'Entrar'}
           type={'submit'}
           disabled={!isButtonClickable}
+          className='login-button'
         />
+        <a onClick={() => navigate('/signup')}
+          style={{ cursor: 'pointer' }}
+        >Criar nova conta</a>
       </form >
     </div >
   );
