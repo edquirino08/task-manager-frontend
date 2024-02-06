@@ -1,12 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import LogoImg from '../../img/teste.png';
+import Button from '../../components/Button';
 import Input from '../../components/Input';
 import PasswordInput from '../../components/PasswordInput';
-import Button from '../../components/Button';
+import useAuth from '../../hooks/useAuth';
+import LogoImg from '../../img/teste.png';
 import './signup.css';
 
 const Signup = () => {
+    const { signup } = useAuth();
     const [name, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [phone, setPhone] = React.useState('');
@@ -14,8 +16,8 @@ const Signup = () => {
     const [isButtonClickable, setIsButtonClickable] = React.useState(false);
 
     React.useEffect(() => {
-        setIsButtonClickable(email.trim() !== '' && password.trim() !== '');
-    }, [email, password]);
+        setIsButtonClickable(email.trim() !== '' && password.trim() !== '' && phone.trim() !== '' && name.trim() !== '');
+    }, [email, password, phone, name]);
 
     const navigate = useNavigate();
 
@@ -36,9 +38,19 @@ const Signup = () => {
         setPassword(e.target.value);
     }
 
+    const handleSignup = async (e) => {
+        e.preventDefault();
+        const access = await signup(name, email, phone, password);
+        if (access) {
+            console.log('Cadastrado');
+        } else {
+            console.log('Não cadastrado');
+        }
+    };
+
     return (
         <div className='paper-container'>
-            <form>
+            <form onSubmit={handleSignup}>
                 <img src={LogoImg} alt='Logo' className='logo' />
                 <p className='title'>
                     Seja bem-vindo! Preencha o formulário abaixo e crie sua conta.
