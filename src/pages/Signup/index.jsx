@@ -62,7 +62,7 @@ const Signup = () => {
                     <Input className='mailInput' type='email' value={email} onChange={handleEmailChange} placeholder='Email' />
                 </div>
                 <div className='inputContainer'>
-                    <Input className='phoneInput' type='tel' value={phone} onChange={handlePhoneChange} placeholder='Telefone' />
+                    <Input className='phoneInput' type='tel' value={phone} onChange={handlePhoneChange} placeholder='Telefone' mask='(99) 99999-9999' />
                 </div>
                 <div className='inputContainer'>
                     <PasswordInput className='passwordInput' value={password} onChange={handlePasswordChange} placeholder='Senha' />
