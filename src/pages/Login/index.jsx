@@ -38,9 +38,9 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await signin(email, password);
-    if (res) {
-      navigate('/dashboard');
+    const userData = await signin(email, password);
+    if (userData) {
+      navigate('/dashboard', { state: { userData } });
     } else {
       setLoginError(true);
     }
