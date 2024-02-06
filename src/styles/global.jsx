@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import backgroundImage from '../img/backgorund.jpg';
-import 'typeface-roboto'; 
+import 'typeface-roboto';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -13,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100vw;
     height: 100vh;
     font-family: 'Roboto', sans-serif;
-    background-image: url(${backgroundImage});
+    background-color: #f5f5f5;
     background-size: cover;
     background-position: center center;
   }

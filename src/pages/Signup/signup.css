@@ -1,0 +1,32 @@
+.body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.title {
+    color: rgba(128, 128, 128, 0.692);
+    font-size: medium;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.nameInput,
+.mailInput,
+.phoneInput,
+.passwordInput {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-sizing: border-box;
+    outline: none;
+    margin-bottom: 0;
+}

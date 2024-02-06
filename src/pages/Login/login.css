@@ -1,92 +1,43 @@
-body {
-    margin: 0;
+.container {
     display: flex;
-    align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    align-items: center;
+    height: 100vh;
+    min-width: 100vw;
 }
 
-a {
-    color: #0077B5;
-    text-decoration: none;
-    font-size: 14px;
-    margin-top: 10px;
-    display: block;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.paper-container {
+form {
     display: flex;
+    padding: 3rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    border: 1px solid #cccccc;
-    background-color: #ccc;
-    border-radius: 8px;
+    background-color: #fff;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 350px;
+    gap: 30px 0px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: auto;
 }
 
-.paper-container img {
-    margin-bottom: 10px;
-}
-
-.mailInput,
-.passwordInput {
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    width: 100%;
-    box-sizing: border-box;
-    outline: none;
-    margin-bottom: 20px;
-}
-
-.mailInput:focus,
-.passwordInput:focus {
-    border-color: #0077B5;
-    box-shadow: 0 0 0 2px #E0F0FF;
-}
-
-.inputLabel {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-
-.signupLink,
-.forgotPasswordLink {
-    color: #0077B5;
-    text-decoration: none;
-    font-size: 14px;
-    display: block;
-    margin-top: 10px;
-}
-
-.signupLink:hover,
-.forgotPasswordLink:hover {
-    text-decoration: underline;
-}
-
-.loginButton {
-    background-color: #0077B5;
+h1 {
     color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    width: 100%;
-    margin: 0 auto;
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: light;
 }
 
+p {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
 
-.loginButton:active {
-    opacity: 0.6;
+a {
+    color: rgb(0, 187, 255);
+    font-size: 14px;
+}
+
+.login-error {
+    color: red;
+    margin-top: 0.5rem;
 }

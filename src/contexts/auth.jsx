@@ -1,6 +1,6 @@
-import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import api from '../services/Api';
+import { createContext, useEffect, useState } from 'react';
+import api from '../services/api';
 
 export const AuthContext = createContext({});
 
@@ -28,26 +28,18 @@ export const AuthProvider = ({ children }) => {
     };
 
 
-    const signup = (email, password) => {
-        const usersStorage = JSON.parse(localStorage.getItem('users_bd'));
-
-        const hasUser = usersStorage?.filter((user) => user.email === email);
-
-        if (hasUser?.length) {
-            return 'Já tem uma conta com esse E-mail';
+    const signup = async (name, email, telephone, password) => {
+        try {
+            console.log('email:', email);
+            console.log('password:', password);
+            console.log('name:', name);
+            console.log('phone:', telephone);
+            await api.post('/signup', { email, password, nameUser: name, telephone });
+            return true;
+        } catch (err) {
+            console.log(err);
+            return false;
         }
-
-        let newUser;
-
-        if (usersStorage) {
-            newUser = [...usersStorage, { email, password }];
-        } else {
-            newUser = [{ email, password }];
-        }
-
-        localStorage.setItem('users_bd', JSON.stringify(newUser));
-
-        return;
     };
 
     const signout = () => {
