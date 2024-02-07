@@ -30,3 +30,7 @@
     outline: none;
     margin-bottom: 0;
 }
+
+.error-signup {
+    color: red;
+}

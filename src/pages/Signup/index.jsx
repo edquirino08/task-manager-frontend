@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import PasswordInput from '../../components/PasswordInput';
 import useAuth from '../../hooks/useAuth';
 import LogoImg from '../../img/teste.png';
+import Popup from '../../components/PopUp';
 import './signup.css';
 
 const Signup = () => {
     const { signup } = useAuth();
-    const [name, setName] = React.useState('');
-    const [email, setEmail] = React.useState('');
-    const [phone, setPhone] = React.useState('');
-    const [password, setPassword] = React.useState('');
-    const [isButtonClickable, setIsButtonClickable] = React.useState(false);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [password, setPassword] = useState('');
+    const [isButtonClickable, setIsButtonClickable] = useState(false);
+    const [showErrorSignup, setShowErrorSignup] = useState(false);
+    const [errorSignup, setErrorSignup] = useState('');
+    const [popUpSuccess, setPopUpSuccess] = useState(false);
 
     React.useEffect(() => {
         setIsButtonClickable(email.trim() !== '' && password.trim() !== '' && phone.trim() !== '' && name.trim() !== '');
@@ -21,30 +25,35 @@ const Signup = () => {
 
     const navigate = useNavigate();
 
-
     const handleNameChange = (e) => {
         setName(e.target.value);
+        setShowErrorSignup(false);
     }
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
+        setShowErrorSignup(false);
     }
 
     const handlePhoneChange = (e) => {
-        setPhone(e.target.value);
+        const phoneValue = e.target.value.replace(/[^\d]/g, '');
+        setPhone(phoneValue);
+        setShowErrorSignup(false);
     }
 
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
+        setShowErrorSignup(false);
     }
 
     const handleSignup = async (e) => {
         e.preventDefault();
-        const access = await signup(name, email, phone, password);
-        if (access) {
-            console.log('Cadastrado');
+        const response = await signup(name, email, phone, password);
+        if (response.success) {
+            setPopUpSuccess(true);
         } else {
-            console.log('Não cadastrado');
+            setShowErrorSignup(true);
+            setErrorSignup(response.message);
         }
     };
 
@@ -67,14 +76,14 @@ const Signup = () => {
                 <div className='inputContainer'>
                     <PasswordInput className='passwordInput' value={password} onChange={handlePasswordChange} placeholder='Senha' />
                 </div>
+                {showErrorSignup && <a className='error-signup'>{errorSignup}</a>}
+                {true && (<Popup />)}
                 <Button
                     value={'Cadastrar'}
                     type={'submit'}
                     disabled={!isButtonClickable}
                 />
-                <a onClick={() => navigate('/login')}
-                    style={{ cursor: 'pointer' }}
-                >Voltar para login</a>
+                <a onClick={() => navigate('/login')} style={{ cursor: 'pointer' }}>Voltar para login</a>
             </form>
         </div>
     );

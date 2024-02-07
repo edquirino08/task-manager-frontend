@@ -30,11 +30,32 @@ export const AuthProvider = ({ children }) => {
 
     const signup = async (name, email, telephone, password) => {
         try {
+            if (!name || !email || !telephone || !password) {
+                throw new Error("Todos os campos são obrigatórios.");
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                throw new Error("Email inválido.");
+            }
+            const phoneRegex = /^\d{11}$/;
+            if (!phoneRegex.test(telephone)) {
+                throw new Error("Telefone inválido.");
+            }
+
             await api.post('/signup', { email, password, nameUser: name, telephone });
-            return true;
-        } catch (err) {
-            console.log(err);
-            return false;
+
+            return { success: true, message: "Cadastro realizado com sucesso!" };
+
+        } catch (error) {
+
+            let errorMessage = '';
+            if (error.response && error.response.data && error.response.data.error) {
+                errorMessage = "E-mail já registrado.";
+            } else if (error.message) {
+                errorMessage = error.message;
+            }
+            return { success: false, message: errorMessage };
         }
     };
 
