@@ -1,12 +1,21 @@
-import React from 'react';
+// eslint-disable-next-line no-unused-vars
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { useLocation } from 'react-router-dom';
 import LogoImg from '../../img/teste.png';
 import './dashboard.css';
 import useAuth from '../../hooks/useAuth';
 
 const Dashboard = () => {
   const { signout } = useAuth();
+  const location = useLocation();
+
+  useEffect(() => {
+    const userData = location.state?.userData;
+    console.log(userData);
+  }, [location]);
+
 
   const handleLogout = () => {
     signout();
