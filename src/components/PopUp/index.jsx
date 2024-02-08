@@ -1,6 +1,6 @@
 import React from 'react';
-import './popup.css';
 import { useNavigate } from 'react-router-dom';
+import './popup.css';
 
 const Popup = () => {
 

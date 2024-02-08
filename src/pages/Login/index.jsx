@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Button from '../../components/Button';
+import Input from '../../components/Input';
+import PasswordInput from '../../components/PasswordInput';
 import useAuth from '../../hooks/useAuth';
 import LogoImg from '../../img/teste.png';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
-import PasswordInput from '../../components/PasswordInput';
 import './login.css';
 
 const Login = () => {
@@ -12,6 +12,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState(false);
+  const [errorContent, setErrorContent] = useState('');
   const [isButtonClickable, setIsButtonClickable] = useState(false);
 
   const navigate = useNavigate();
@@ -38,10 +39,25 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const userData = await signin(email, password);
-    if (userData) {
+    const response = await signin(email, password);
+    if (response.access) {
+      const userData = response.data;
       navigate('/dashboard', { state: { userData } });
     } else {
+      switch (response.error) {
+        case '0':
+          setErrorContent('Erro ao processar sua requisição.');
+          break;
+
+        case '1':
+        case '2':
+          setErrorContent('Credenciais inválidas.');
+          break;
+
+        case '3':
+          setErrorContent('Verificação de e-mail pendente.');
+          break;
+      }
       setLoginError(true);
     }
   };
@@ -59,7 +75,7 @@ const Login = () => {
         />
         <PasswordInput
           onChange={handlePasswordChange} />
-        {loginError && <a className='login-error'>Erro! Verifique suas credenciais.</a>}
+        {loginError && <a className='login-error'>{errorContent}</a>}
         <Button
           value={'Entrar'}
           type={'submit'}

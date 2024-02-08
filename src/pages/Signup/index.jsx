@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import PasswordInput from '../../components/PasswordInput';
+import Popup from '../../components/PopUp';
 import useAuth from '../../hooks/useAuth';
 import LogoImg from '../../img/teste.png';
-import Popup from '../../components/PopUp';
 import './signup.css';
 
 const Signup = () => {

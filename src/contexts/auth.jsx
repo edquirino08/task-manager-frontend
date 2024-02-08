@@ -16,14 +16,18 @@ export const AuthProvider = ({ children }) => {
 
     const signin = async (email, password) => {
         try {
-            const access = await api.post('/login', { email, password });
-            const token = access.data.token;
+            const response = await api.post('/login', { email, password });
+            const token = response.data.token;
             const userData = { email, token };
             localStorage.setItem('user_token', JSON.stringify(userData));
             setUser(userData);
-            return access.data;
-        } catch {
-            return false;
+            return { access: true, data: response.data };
+        } catch (err) {
+            let error = '0';
+            if (err.response.data.error) {
+                error = err.response.data.error;
+            }
+            return { access: false, error };
         }
     };
 

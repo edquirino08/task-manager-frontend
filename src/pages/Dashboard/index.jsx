@@ -1,11 +1,11 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import LogoImg from '../../img/teste.png';
 import './dashboard.css';
-import useAuth from '../../hooks/useAuth';
 
 const Dashboard = () => {
   const { signout } = useAuth();
