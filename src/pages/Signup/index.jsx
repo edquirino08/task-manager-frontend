@@ -6,6 +6,7 @@ import PasswordInput from '../../components/PasswordInput';
 import Popup from '../../components/PopUp';
 import useAuth from '../../hooks/useAuth';
 import LogoImg from '../../img/teste.png';
+import api from '../../services/Api';
 import './signup.css';
 
 const Signup = () => {
@@ -50,6 +51,7 @@ const Signup = () => {
         e.preventDefault();
         const response = await signup(name, email, phone, password);
         if (response.success) {
+            api.post('/sendVerificationEmail')
             setPopUpSuccess(true);
         } else {
             setShowErrorSignup(true);
@@ -77,7 +79,7 @@ const Signup = () => {
                     <PasswordInput className='passwordInput' value={password} onChange={handlePasswordChange} placeholder='Senha' />
                 </div>
                 {showErrorSignup && <a className='error-signup'>{errorSignup}</a>}
-                {true && (<Popup />)}
+                {popUpSuccess && (<Popup email={email}/>)}
                 <Button
                     value={'Cadastrar'}
                     type={'submit'}
