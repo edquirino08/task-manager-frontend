@@ -1,7 +1,9 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './popup.css';
 
+// eslint-disable-next-line react/prop-types
 const Popup = ({ email }) => {
     const navigate = useNavigate();
 

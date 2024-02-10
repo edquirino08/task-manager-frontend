@@ -47,9 +47,9 @@ export const AuthProvider = ({ children }) => {
                 throw new Error("Telefone inválido.");
             }
 
-            await api.post('/signup', { email, password, nameUser: name, telephone });
-
-            return { success: true, message: "Cadastro realizado com sucesso!" };
+            const response = await api.post('/signup', { email, password, nameUser: name, telephone });
+            const { token } = response.data
+            return { success: true, token };
 
         } catch (error) {
 

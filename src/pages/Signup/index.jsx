@@ -51,6 +51,7 @@ const Signup = () => {
         e.preventDefault();
         const response = await signup(name, email, phone, password);
         if (response.success) {
+            api.defaults.headers.common['token'] = response.token;
             api.post('/sendVerificationEmail')
             setPopUpSuccess(true);
         } else {
@@ -79,7 +80,7 @@ const Signup = () => {
                     <PasswordInput className='passwordInput' value={password} onChange={handlePasswordChange} placeholder='Senha' />
                 </div>
                 {showErrorSignup && <a className='error-signup'>{errorSignup}</a>}
-                {popUpSuccess && (<Popup email={email}/>)}
+                {popUpSuccess && (<Popup email={email} />)}
                 <Button
                     value={'Cadastrar'}
                     type={'submit'}
