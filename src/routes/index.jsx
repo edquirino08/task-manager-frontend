@@ -5,6 +5,7 @@ import Dashboard from '../pages/Dashboard';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import PrivateRoute from '../components/PrivateRoute/privateRoute';
+import Confmail from '../pages/Confmail';
 
 const index = () => {
     return (
@@ -14,6 +15,7 @@ const index = () => {
                     <Route path='/' element={<Login />} />
                     <Route exact path='/signup' element={<Signup />} />
                     <Route exact path='/dashboard' element={<PrivateRoute Item={Dashboard} />} />
+                    <Route path='/confmail/:token' element={<Confmail />} />
                     <Route path='*' element={<Login />} />
                 </Routes>
             </Fragment>
