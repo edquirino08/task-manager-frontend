@@ -1,4 +1,4 @@
-.body {
+body {
     margin: 0;
     display: flex;
     align-items: center;
@@ -33,4 +33,16 @@
 
 .error-signup {
     color: red;
+}
+
+a {
+    color: rgb(0, 187, 255);
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+    display: block;
+}
+
+a:hover {
+    text-decoration: underline;
 }

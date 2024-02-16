@@ -1,17 +1,16 @@
-// eslint-disable-next-line no-unused-vars
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect } from 'react';
+import React from 'react';
+import './dashboard.css';
 import { useLocation } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import LogoImg from '../../img/teste.png';
-import './dashboard.css';
+import { FiSettings, FiLogOut } from 'react-icons/fi';
+
 
 const Dashboard = () => {
   const { signout } = useAuth();
   const location = useLocation();
 
-  useEffect(() => {
+  React.useEffect(() => {
     const userData = location.state?.userData;
     console.log(userData);
   }, [location]);
@@ -23,16 +22,12 @@ const Dashboard = () => {
 
   return (
     <div className='dashboard-container'>
-      <div className='top-bar'>
+      <div className='logo-container'>
         <img src={LogoImg} alt='Logo' className='logo' />
-        <div className='logout-container'>
-          <button className='logout' onClick={handleLogout}>
-            <FontAwesomeIcon icon={faSignOutAlt} />
-            Logout
-          </button>
-        </div>
+        <FiLogOut className='logout-button' onClick={handleLogout} />
       </div>
-      <div className='paper-container'>
+      <div className='options-container'>
+        <FiSettings className='settings-button' onClick={handleLogout} />
       </div>
     </div>
   );
