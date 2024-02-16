@@ -41,8 +41,8 @@ const Login = () => {
     e.preventDefault();
     const response = await signin(email, password);
     if (response.access) {
-      const userData = response.data;
-      navigate('/dashboard', { state: { userData } });
+      localStorage.setItem('userData', JSON.stringify(response.data));
+      navigate('/dashboard');
     } else {
       switch (response.error) {
         case '0':

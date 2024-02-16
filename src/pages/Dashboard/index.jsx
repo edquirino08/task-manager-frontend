@@ -1,6 +1,5 @@
 import React from 'react';
 import './dashboard.css';
-import { useLocation } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import LogoImg from '../../img/teste.png';
 import { FiSettings, FiLogOut } from 'react-icons/fi';
@@ -9,9 +8,6 @@ import TasksTable from '../../components/TasksTable';
 
 const Dashboard = () => {
   const { signout } = useAuth();
-  const location = useLocation();
-  const userData = location.state?.userData;
-  const token = userData?.token;
 
   // React.useEffect(() => {
   //   const userData = location.state?.userData;
@@ -23,6 +19,7 @@ const Dashboard = () => {
     signout();
   };
 
+
   return (
     <div className='dashboard-container'>
       <div className='logo-container'>
@@ -32,7 +29,7 @@ const Dashboard = () => {
       <div className='options-container'>
         <FiSettings className='settings-button' onClick={handleLogout} />
       </div>
-      {token && <TasksTable token={token} />}
+      <TasksTable />
     </div>
   );
 }
