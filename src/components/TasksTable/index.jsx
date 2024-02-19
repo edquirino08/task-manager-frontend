@@ -33,7 +33,10 @@ const TasksTable = () => {
 
     return (
         <div>
-            <Search search={search} setSearch={setSearch} />
+           <div className="search-and-button-container">
+                <Search search={search} setSearch={setSearch} />
+                <button className='button-add-task'>Nova Tarefa +</button>
+            </div>
             <div className="tasks-container">
                 <div className="paper-pending">
                     <h3>

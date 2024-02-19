@@ -1,6 +1,8 @@
 .search-container {
     position: relative;
     width: fit-content;
+    display: flex;
+    align-items: center;
 }
 
 .input-container {
@@ -17,8 +19,6 @@ input {
     font-size: 14px;
     outline: none;
     box-shadow: 0 4px 6px rgb(125, 149, 230);
-
-
 }
 
 input:focus {

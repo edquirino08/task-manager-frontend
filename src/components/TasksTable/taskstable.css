@@ -2,6 +2,21 @@
   display: flex;
 }
 
+.button-add-task{
+  background-color: #0ee439d1;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  border-color: #f5f5f5;
+}
+
+.search-and-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Alinhar verticalmente os elementos */
+  margin-bottom: 20px; /* Ajuste conforme necessário */
+}
+
 .paper-pending,
 .paper-in-progress,
 .paper-done-task {
@@ -40,7 +55,7 @@ h3 {
   padding-top: 50px;
   margin-bottom: 20px;
   background-color: #fff;
-  box-shadow: 0 4px 6px rgb(125, 149, 230);
+  box-shadow: 0 4px 6px rgba(125, 149, 230, 0.467);
   border-radius: 5px;
 }
 
@@ -51,7 +66,7 @@ h3 {
   padding-top: 50px;
   margin-bottom: 20px;
   background-color: #fff;
-  box-shadow: 0 4px 6px rgb(132, 233, 112);
+  box-shadow: 0 4px 6px rgba(132, 233, 112, 0.811);
   border-radius: 5px;
 }
 
@@ -125,28 +140,4 @@ h3 {
   display: flex;
   justify-content: space-between;
   width: 100%;
-}
-
-
-
-/* Estilos para dispositivos móveis */
-@media only screen and (max-width: 768px) {
-
-  .paper-pending,
-  .paper-in-progress,
-  .paper-done-task {
-    flex-basis: calc(50% - 20px);
-    /* Ajusta a largura para 50% em telas menores */
-  }
-}
-
-/* Estilos para dispositivos móveis menores */
-@media only screen and (max-width: 480px) {
-
-  .paper-pending,
-  .paper-in-progress,
-  .paper-done-task {
-    flex-basis: calc(100% - 20px);
-    /* Ajusta a largura para 100% em telas muito pequenas */
-  }
 }
