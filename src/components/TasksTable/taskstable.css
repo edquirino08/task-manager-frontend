@@ -2,6 +2,21 @@
   display: flex;
 }
 
+.button-add-task{
+  background-color: #0ee439d1;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  border-color: #f5f5f5;
+}
+
+.search-and-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Alinhar verticalmente os elementos */
+  margin-bottom: 20px; /* Ajuste conforme necessário */
+}
+
 .paper-pending,
 .paper-in-progress,
 .paper-done-task {
@@ -12,7 +27,7 @@
 
 }
 
- h3 {
+h3 {
   position: absolute;
   top: 0;
   left: 0;
@@ -37,7 +52,7 @@
   padding-top: 50px;
   margin-bottom: 20px;
   background-color: #fff;
-  box-shadow: 0 4px 6px rgb(125, 149, 230);
+  box-shadow: 0 4px 6px rgba(125, 149, 230, 0.467);
   border-radius: 5px;
 }
 
@@ -48,7 +63,7 @@
   padding-top: 50px;
   margin-bottom: 20px;
   background-color: #fff;
-  box-shadow: 0 4px 6px rgb(132, 233, 112);
+  box-shadow: 0 4px 6px rgba(132, 233, 112, 0.811);
   border-radius: 5px;
 }
 
@@ -108,12 +123,12 @@ h3 {
   align-items: center;
 }
 
-.date-create{
+.date-create {
   margin-top: 5px;
   font-size: 10.2px;
 }
 
-.date-mod{
+.date-mod {
   margin-top: 5px;
   font-size: 10.2px;
 }
