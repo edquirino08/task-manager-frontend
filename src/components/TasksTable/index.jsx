@@ -2,6 +2,7 @@ import React from 'react';
 import api from '../../services/Api';
 import Search from '../Search';
 import './taskstable.css';
+import { BsCircleFill } from 'react-icons/bs';
 
 const TasksTable = () => {
     const [tasks, setTasks] = React.useState([]);
@@ -12,6 +13,7 @@ const TasksTable = () => {
         if (userData) {
             handleListTasks();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     React.useEffect(() => {
@@ -36,8 +38,13 @@ const TasksTable = () => {
                     <h3>Pendente</h3>
                     {tasks.filter(task => task.task.toLowerCase().includes(search.toLowerCase())).map(task => task.status === 0 && (
                         <div className='pending-task' key={task.id}>
-                            <p className='task'>{task.task}</p>
-                            <p className='category'>({task.category})</p>
+                            <div className='task-content'>
+                                <p className='task'>{task.task}</p>
+                                <p className='category'>({task.category})</p>
+                            </div>
+                            <div className='task-status'>
+                                <BsCircleFill  style={{ color: '#f5e664', fontSize: '10px' }} />
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -45,8 +52,13 @@ const TasksTable = () => {
                     <h3>Em Progresso</h3>
                     {tasks.filter(task => task.task.toLowerCase().includes(search.toLowerCase())).map(task => task.status === 1 && (
                         <div className='in-progress-task' key={task.id}>
-                            <p className='task'>{task.task}</p>
-                            <p className='category'>({task.category})</p>
+                            <div className='task-content'>
+                                <p className='task'>{task.task}</p>
+                                <p className='category'>({task.category})</p>
+                            </div>
+                            <div className='task-status'>
+                                <BsCircleFill  style={{ color: '#0e96f1', fontSize: '10px' }} />
+                            </div>
                         </div>
                     ))}
                 </div>
