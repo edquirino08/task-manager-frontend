@@ -1,13 +1,30 @@
+.tasks-container {
+  display: flex;
+}
+
+.paper-pending,
+.paper-in-progress,
+.paper-done-task {
+  flex: 1;
+  margin-right: 0px;
+}
+
 .paper-pending {
   border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgb(125, 149, 230);
+  border-radius: 5px;
 }
 
 .paper-in-progress {
   border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgb(125, 149, 230);
+  border-radius: 5px;
 }
 
 
@@ -15,23 +32,26 @@
   border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgb(125, 149, 230);
+  border-radius: 5px;
 }
 
-
 .pending-task {
-  background-color: #FFD700;
   padding: 10px;
   margin-bottom: 10px;
 }
 
 .in-progress-task {
-  background-color: #87CEEB;
   padding: 10px;
   margin-bottom: 10px;
 }
 
 .done-task {
-  background-color: #90EE90;
   padding: 10px;
   margin-bottom: 10px;
+}
+
+h3 {
+  color: #000000c9
 }

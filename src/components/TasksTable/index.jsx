@@ -31,7 +31,7 @@ const TasksTable = () => {
     return (
         <div>
             <Search search={search} setSearch={setSearch} />
-            <ul>
+            <div className="tasks-container">
                 <div className="paper-pending">
                     <h3>Pendente</h3>
                     {tasks.filter(task => task.task.toLowerCase().includes(search.toLowerCase())).map(task => task.status === 0 && (
@@ -59,7 +59,7 @@ const TasksTable = () => {
                         </div>
                     ))}
                 </div>
-            </ul>
+            </div>
         </div>
     );
 };
