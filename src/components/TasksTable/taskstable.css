@@ -5,11 +5,14 @@
 .paper-pending,
 .paper-in-progress,
 .paper-done-task {
-  flex: 1;
-  margin-right: 0px;
-  width: 350px;
+  flex: 1 1 calc(33.33% - 20px); /* Ajusta a largura dos papéis e mantém a margem */
+  margin-bottom: 20px;
+  padding: 10px;
+  padding-top: 50px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
-
 }
 
 h3 {
@@ -27,7 +30,7 @@ h3 {
   padding-top: 50px;
   margin-bottom: 20px;
   background-color: #fff;
-  box-shadow: 0 4px 6px rgb(185, 185, 142);
+  box-shadow: 0 4px 6px rgb(232, 232, 59);
   border-radius: 5px;
 }
 
@@ -56,7 +59,7 @@ h3 {
   padding: 15px;
   margin-bottom: 10px;
   border: 0.5px solid #cccccc75;
-  box-shadow: 0 4px 6px rgb(211, 230, 125);
+  box-shadow: 0 4px 6px rgb(206, 207, 203);
   border-radius: 5px;
 }
 
@@ -64,7 +67,7 @@ h3 {
   padding: 15px;
   margin-bottom: 10px;
   border: 0.5px solid #cccccc75;
-  box-shadow: 0 4px 6px rgb(125, 188, 230);
+  box-shadow: 0 4px 6px rgb(206, 207, 203);
   border-radius: 5px;
 }
 
@@ -72,7 +75,7 @@ h3 {
   padding: 15px;
   margin-bottom: 10px;
   border: 0.5px solid #cccccc75;
-  box-shadow: 0 4px 6px rgb(125, 230, 125);
+  box-shadow: 0 4px 6px rgb(206, 207, 203);
   border-radius: 5px;
 }
 
@@ -125,12 +128,20 @@ h3 {
 }
 
 
-/* Media query para dispositivos móveis */
-@media only screen and (max-width: 600px) {
+/* Estilos para dispositivos móveis */
+@media only screen and (max-width: 768px) {
+  .paper-pending,
+  .paper-in-progress,
+  .paper-done-task {
+    flex: 1 1 calc(50% - 20px); /* Ajusta a largura para 50% em telas menores */
+  }
+}
 
-  .date-create,
-  .date-mod {
-    font-size: 8px;
-    /* Reduzir o tamanho da fonte para dispositivos móveis */
+/* Estilos para dispositivos móveis menores */
+@media only screen and (max-width: 480px) {
+  .paper-pending,
+  .paper-in-progress,
+  .paper-done-task {
+    flex: 1 1 calc(100% - 20px); /* Ajusta a largura para 100% em telas muito pequenas */
   }
 }
