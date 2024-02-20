@@ -33,7 +33,7 @@ const TasksTable = () => {
 
     return (
         <div>
-           <div className="search-and-button-container">
+            <div className="search-and-button-container">
                 <Search search={search} setSearch={setSearch} />
                 <button className='button-add-task'>Nova Tarefa +</button>
             </div>
