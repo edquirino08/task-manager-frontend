@@ -6,15 +6,6 @@
   gap: 10px;
 }
 
-.paper-pending,
-.paper-in-progress,
-.paper-done-task {
-  display: flex;
-  flex-direction: column;
-  
-}
-
-
 .task-table {
   display: flex;
 }
@@ -41,6 +32,8 @@
 .paper-done-task {
   flex: 1 1 calc(33.33% - 20px);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .paper-pending {

@@ -48,7 +48,6 @@ const TasksTable = () => {
                             <div className='task-content'>
                                 <div>
                                     <p className='task'>{task.task}</p>
-                                    <p className='category'>({task.category})</p>
                                 </div>
                                 <div className="dates-container">
                                     <div>
@@ -72,7 +71,6 @@ const TasksTable = () => {
                             <div className='task-content'>
                                 <div>
                                     <p className='task'>{task.task}</p>
-                                    <p className='category'>({task.category})</p>
                                 </div>
                                 <div className="dates-container">
                                     <div>
@@ -96,7 +94,6 @@ const TasksTable = () => {
                             <div className='task-content'>
                                 <div>
                                     <p className='task'>{task.task}</p>
-                                    <p className='category'>({task.category})</p>
                                 </div>
                                 <div className="dates-container">
                                     <div>
