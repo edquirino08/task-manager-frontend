@@ -38,13 +38,17 @@ const NewTask = ({ onClose }) => {
                 <input
                     placeholder={'Digite o nome da tarefa'}
                     className='task-name-input'
-                    onChange={handleChangeName}
-                />
+                    onChange={handleChangeName} />
                 <TextArea
                     value={description}
                     onChange={handleChangeDescription}
                     maxLength={255}
                     className='text-area' />
+                <input
+                    placeholder={'Selecione a prioridade da tarefa'}
+                    className='task-name-input'
+                    onChange={handleChangeName}
+                />
             </div>
         </div>
     )

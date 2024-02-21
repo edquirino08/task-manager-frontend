@@ -23,8 +23,7 @@
 }
 
 .title-container {
-    text-align: left;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
 }
 
 .title-container h2 {
@@ -37,5 +36,12 @@
 }
 
 input {
-    margin: 20px;
+    margin: 20px 20px 20px 0;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+input::placeholder {
+    margin: 20px 20px 20px 0;
+    font-weight: 400;
 }
