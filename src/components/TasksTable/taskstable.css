@@ -1,4 +1,21 @@
 .tasks-container {
+  max-height: 380px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.paper-pending,
+.paper-in-progress,
+.paper-done-task {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+
+.task-table {
   display: flex;
 }
 
