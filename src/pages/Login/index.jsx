@@ -84,6 +84,7 @@ const Login = () => {
         />
         <a onClick={() => navigate('/signup')}
           style={{ cursor: 'pointer' }}
+          className='create-new-account'
         >Criar nova conta</a>
       </form >
     </div >

@@ -38,6 +38,11 @@
   flex-direction: column;
 }
 
+.task-content p{
+  font-weight: 500;
+  color: #000000c9;
+}
+
 .paper-pending {
   border: 1px solid #ccc;
   padding: 10px;
@@ -80,7 +85,7 @@ h3 {
   font-size: large;
   margin-bottom: 10px;
   font-family: 'Roboto', sans-serif;
-  font-weight: 400px;
+  font-weight: 400;
 }
 
 .pending-task {

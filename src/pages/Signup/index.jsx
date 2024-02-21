@@ -86,7 +86,7 @@ const Signup = () => {
                     type={'submit'}
                     disabled={!isButtonClickable}
                 />
-                <a onClick={() => navigate('/login')} style={{ cursor: 'pointer' }}>Voltar para login</a>
+                <a onClick={() => navigate('/login')} style={{ cursor: 'pointer' }} className='back-login'>Voltar para login</a>
             </form>
         </div>
     );

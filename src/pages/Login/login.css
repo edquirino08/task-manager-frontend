@@ -46,6 +46,7 @@ a {
     font-size: 14px;
     margin-top: 10px;
     display: block;
+    margin-top: -15px;
 }
 
 a:hover {
