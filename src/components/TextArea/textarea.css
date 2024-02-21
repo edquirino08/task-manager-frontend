@@ -1,0 +1,37 @@
+.textarea-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.textarea-wrapper {
+    position: relative;
+    width: 250px;
+}
+
+.textarea-field {
+    min-height: 70px;
+    max-height: 100px;
+    width: 400px;
+    font-size: 13px;
+    background-color: #f8f8f8;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(28, 98, 211, 0.94);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: none;
+    padding: 10px;
+}
+
+.textarea-field::placeholder {
+    color: #666666;
+    font-size: 13px;
+    opacity: 0.7;
+    font-family: 'Roboto', sans-serif;
+}
+
+.character-count {
+    font-size: 12px;
+    color: #666666;
+    margin-top: 5px;
+}

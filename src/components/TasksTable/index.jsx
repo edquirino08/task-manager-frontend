@@ -2,13 +2,14 @@ import React from 'react';
 import api from '../../services/Api';
 import Search from '../Search';
 import './taskstable.css';
-import { BsCircleFill } from 'react-icons/bs';
 import { format } from 'date-fns';
+import NewTask from '../NewTask';
 
 const TasksTable = () => {
     const [tasks, setTasks] = React.useState([]);
     const userData = JSON.parse(localStorage.getItem('userData'));
     const [search, setSearch] = React.useState('');
+    const [newTask, setNewTask] = React.useState(false);
 
     React.useEffect(() => {
         if (userData) {
@@ -31,17 +32,25 @@ const TasksTable = () => {
         }
     };
 
+    const handleOpenNewTask = () => {
+        setNewTask(true);
+    };
+
+    const handleClosePopup = () => {
+        setNewTask(false);
+    };
+
     return (
         <div>
             <div className="search-and-button-container">
                 <Search search={search} setSearch={setSearch} />
-                <button className='button-add-task'>Nova Tarefa +</button>
+                <button className='button-add-task' onClick={handleOpenNewTask}>Nova Tarefa +</button>
+                {newTask && <NewTask onClose={handleClosePopup} />}
             </div>
             <div className="tasks-container">
                 <div className="paper-pending">
                     <h3>
                         Pendente
-                        <BsCircleFill style={{ color: '#f5e664', fontSize: '10px', marginLeft: '5px' }} />
                     </h3>
                     {tasks.filter(task => task.task.toLowerCase().includes(search.toLowerCase())).map(task => task.status === 0 && (
                         <div className='pending-task' key={task.id}>
@@ -64,7 +73,6 @@ const TasksTable = () => {
                 <div className="paper-in-progress">
                     <h3>
                         Em Progresso
-                        <BsCircleFill style={{ color: '#0e96f1', fontSize: '10px', marginLeft: '5px' }} />
                     </h3>
                     {tasks.filter(task => task.task.toLowerCase().includes(search.toLowerCase())).map(task => task.status === 1 && (
                         <div className='in-progress-task' key={task.id}>
@@ -87,7 +95,6 @@ const TasksTable = () => {
                 <div className="paper-done-task">
                     <h3>
                         Concluída
-                        <BsCircleFill style={{ color: '#70e070', fontSize: '10px', marginLeft: '5px' }} />
                     </h3>
                     {tasks.filter(task => task.task.toLowerCase().includes(search.toLowerCase())).map(task => task.status === 2 && (
                         <div className='done-task' key={task.id}>
