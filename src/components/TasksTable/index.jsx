@@ -44,7 +44,7 @@ const TasksTable = () => {
         <div>
             <div className="search-and-button-container">
                 <Search search={search} setSearch={setSearch} />
-                <button className='button-add-task' onClick={handleOpenNewTask}>Nova Tarefa +</button>
+                <button className='button-add-task' onClick={handleOpenNewTask}> Nova Tarefa</button>
                 {newTask && <NewTask onClose={handleClosePopup} />}
             </div>
             <div className="tasks-container">

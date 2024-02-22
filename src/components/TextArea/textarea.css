@@ -14,12 +14,12 @@
     width: 410px;
     border: 1px solid #bbb;
     border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(28, 98, 211, 0.94);
+    box-shadow: 0 2px 4px rgb(125, 149, 230);
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
     resize: none;
     padding: 10px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 .textarea-field::placeholder {
