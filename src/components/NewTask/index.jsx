@@ -4,6 +4,8 @@ import TextArea from '../TextArea';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import pt from 'date-fns/locale/pt';
+import api from '../../services/Api';
+import LoadingSpinner from '../LoadingSpinner';
 // eslint-disable-next-line react/prop-types
 const NewTask = ({ onClose }) => {
     const [taskName, setTaskName] = React.useState('');
@@ -12,6 +14,9 @@ const NewTask = ({ onClose }) => {
     const [priority, setPriority] = React.useState(0);
     const [status, setStatus] = React.useState(-1);
     const [selectedDateTime, setSelectedDateTime] = React.useState(null);
+    const [serverError, setServerError] = React.useState(false);
+    const [isReloading, setIsReloading] = React.useState(false);
+
 
 
     React.useEffect(() => {
@@ -28,19 +33,22 @@ const NewTask = ({ onClose }) => {
 
     const handleChangeName = (e) => {
         setTaskName(e.target.value);
+        setServerError(false);
     };
 
     const handleChangeDescription = (value) => {
         setDescription(value);
+        setServerError(false);
     };
 
     const handleChangePriority = (e) => {
-        const newPriority = e.target.value;
-        setPriority(newPriority);
+        setPriority(e.target.value);
+        setServerError(false);
     };
 
     const handleChangeStatus = (e) => {
         setStatus(e.target.value);
+        setServerError(false);
     };
 
     React.useEffect(() => {
@@ -50,11 +58,33 @@ const NewTask = ({ onClose }) => {
 
     const handleChangeDateTime = (date) => {
         setSelectedDateTime(date);
+        setServerError(false);
     };
 
     const handleClose = () => {
         onClose();
-    }
+    };
+
+    const handleCreateNewTask = async () => {
+        setIsReloading(true);
+        try {
+            const body = {
+                task: taskName,
+                description: description,
+                status: status,
+                priority: priority,
+                date_end: selectedDateTime
+            };
+            await api.post('/saveTask', body);
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        } catch {
+            setServerError(true);
+            setIsReloading(false);
+        }
+
+    };
 
     return (
         <div className='new-task-container'>
@@ -104,8 +134,15 @@ const NewTask = ({ onClose }) => {
                 />
                 <div className='buttons-container'>
                     <button className='cancel' onClick={handleClose}>Cancelar</button>
-                    <button className='create-task'>Criar tarefa</button>
-
+                    <button
+                        className='create-task'
+                        disabled={taskName === '' || status === -1}
+                        onClick={handleCreateNewTask}
+                    >Criar tarefa</button>
+                    {isReloading && <LoadingSpinner />}
+                </div>
+                <div className='login-error'>
+                    {serverError && (<a>{'Error ao criar tarefa'}</a>)}
                 </div>
             </div>
         </div>
