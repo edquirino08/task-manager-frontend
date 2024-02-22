@@ -22,4 +22,12 @@ form {
 
 p {
     color: rgba(15, 15, 15, 0.683);
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+a {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px;
 }

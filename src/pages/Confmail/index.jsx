@@ -35,7 +35,7 @@ const Confmail = () => {
                 <p>{message}</p>
                 <a onClick={() => navigate('/login')}
                     style={{ cursor: 'pointer' }}
-                >Realizar login</a>
+                >Voltar para login</a>
             </form>
         </div>
     )

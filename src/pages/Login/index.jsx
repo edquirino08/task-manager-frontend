@@ -5,6 +5,7 @@ import Input from '../../components/Input';
 import PasswordInput from '../../components/PasswordInput';
 import useAuth from '../../hooks/useAuth';
 import LogoImg from '../../img/teste.png';
+import LoadingSpinner from '../../components/LoadingSpinner';
 import './login.css';
 
 const Login = () => {
@@ -14,6 +15,7 @@ const Login = () => {
   const [loginError, setLoginError] = useState(false);
   const [errorContent, setErrorContent] = useState('');
   const [isButtonClickable, setIsButtonClickable] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -38,12 +40,14 @@ const Login = () => {
   }
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const response = await signin(email, password);
     if (response.access) {
       localStorage.setItem('userData', JSON.stringify(response.data));
       navigate('/dashboard');
     } else {
+      setLoading(false);
       switch (response.error) {
         case '0':
           setErrorContent('Erro ao processar sua requisição.');
@@ -82,6 +86,7 @@ const Login = () => {
           disabled={!isButtonClickable}
           className='login-button'
         />
+        {loading && <LoadingSpinner />}
         <a onClick={() => navigate('/signup')}
           style={{ cursor: 'pointer' }}
           className='create-new-account'

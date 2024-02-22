@@ -30,19 +30,20 @@
 
 .popup-content h1 {
     margin-bottom: 30px;
-    color: rgba(15, 15, 15, 0.683);
+    color: rgba(15, 15, 15, 0.986);
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 .popup-content p {
     margin-top: 10px;
     color: #090d0fa0;
-    font-size: 15px;
-    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 .popup-content button {
     margin: 20px;
-    margin-top: 70px; /* Ajuste a margem superior para descer mais o botão */
+    margin-top: 70px;
     color: rgb(255, 255, 255);
     border-radius: 5px;
     background-color: #0077B5;
@@ -51,4 +52,6 @@
     width: 135px;
     font-size: 15px;
     cursor: pointer;
+    box-shadow: 0 4px 6px rgb(125, 149, 230);
+
 }
