@@ -52,7 +52,6 @@ const NewTask = ({ onClose }) => {
     };
 
     React.useEffect(() => {
-        console.log('Olha a prioridade', priority);
     }, [priority]);
 
 

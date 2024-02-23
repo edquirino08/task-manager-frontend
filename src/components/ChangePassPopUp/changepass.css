@@ -1,0 +1,62 @@
+.pop-up-container {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    z-index: 1000;
+}
+
+.pop-up-content {
+    background-color: #fff;
+    padding: 30px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    z-index: 1001;
+    max-width: 400px;
+}
+
+h2 {
+    margin-bottom: 15px;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+p {
+    font-size: 17px;
+}
+
+input {
+    width: 100%;
+    font-size: 15px;
+}
+
+input::placeholder {
+    font-size: 15px;
+}
+
+.pass-button {
+    background-color: #1083ee;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+
+.pass-button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: #fff;
+}
+
+
+.error-message {
+    color: red;
+    margin: 10px;
+    margin-bottom: 20px;
+}

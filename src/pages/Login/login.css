@@ -44,9 +44,8 @@ a {
     color: rgb(0, 187, 255);
     text-decoration: none;
     font-size: 14px;
-    margin-top: 10px;
+    margin: 0px;
     display: block;
-    margin-top: -15px;
 }
 
 a:hover {

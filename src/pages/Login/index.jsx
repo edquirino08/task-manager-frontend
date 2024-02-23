@@ -6,6 +6,7 @@ import PasswordInput from '../../components/PasswordInput';
 import useAuth from '../../hooks/useAuth';
 import LogoImg from '../../img/teste.png';
 import LoadingSpinner from '../../components/LoadingSpinner';
+import ChangePassPopUp from '../../components/ChangePassPopUp';
 import './login.css';
 
 const Login = () => {
@@ -16,6 +17,7 @@ const Login = () => {
   const [errorContent, setErrorContent] = useState('');
   const [isButtonClickable, setIsButtonClickable] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [showPopUpPassowrd, setShowPopUpPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -49,10 +51,6 @@ const Login = () => {
     } else {
       setLoading(false);
       switch (response.error) {
-        case '0':
-          setErrorContent('Erro ao processar sua requisição.');
-          break;
-
         case '1':
         case '2':
           setErrorContent('Credenciais inválidas.');
@@ -65,6 +63,14 @@ const Login = () => {
       setLoginError(true);
     }
   };
+
+  const handleForgotPassword = () => {
+    setShowPopUpPassword(true);
+  };
+
+  const handleClosePopUp = () => {
+    setShowPopUpPassword(false);
+  }
 
   return (
     <div className='container'>
@@ -89,8 +95,12 @@ const Login = () => {
         {loading && <LoadingSpinner />}
         <a onClick={() => navigate('/signup')}
           style={{ cursor: 'pointer' }}
-          className='create-new-account'
         >Criar nova conta</a>
+
+        {showPopUpPassowrd && <ChangePassPopUp onClose={handleClosePopUp} />}
+        <a onClick={handleForgotPassword}
+          style={{ cursor: 'pointer' }}
+        >Esqueceu a senha?</a>
       </form >
     </div >
   );
