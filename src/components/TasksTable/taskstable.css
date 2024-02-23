@@ -112,19 +112,7 @@ h3 {
   border-radius: 5px;
 }
 
-.date-create {
+.date-end {
   margin-top: 5px;
-  font-size: 10.2px;
-}
-
-.date-mod {
-  margin-top: 5px;
-  font-size: 10.2px;
-  margin-left: 15px;
-}
-
-.dates-container {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+  font-size: 15px;
 }

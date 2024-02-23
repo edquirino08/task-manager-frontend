@@ -86,8 +86,8 @@ const NewTask = ({ onClose }) => {
     };
 
     return (
-        <div className='new-task-container'>
-            <div ref={popUpRef} className='pop-up-content'>
+        <div className='new-task-container-new-task'>
+            <div ref={popUpRef} className='pop-up-content-new-task'>
                 <div className='title-container'>
                     <h2>Nova Tarefa</h2>
                     <p>Preencha os dados abaixo para criar uma nova tarefa</p>

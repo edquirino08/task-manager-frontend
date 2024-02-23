@@ -26,6 +26,7 @@ const TasksTable = () => {
         try {
             api.defaults.headers.common['token'] = userData.token;
             const response = await api.get('/listTasks');
+            console.log('Olha as tasks:', tasks)
             setTasks(response.data.tasks);
         } catch (error) {
             console.log('Erro ao listar tarefas:', error);
@@ -58,14 +59,14 @@ const TasksTable = () => {
                                 <div>
                                     <p className='task'>{task.task}</p>
                                 </div>
-                                <div className="dates-container">
-                                    <div>
-                                        <p className='date-create'>Criação: {format(new Date(task.date_create), 'dd/MM/yyyy HH:mm')}</p>
-                                    </div>
-                                    <div>
-                                        <p className='date-mod'>Última mod: {format(new Date(task.status_date), 'dd/MM/yyyy HH:mm')}</p>
-                                    </div>
+                                <div>
+                                    <p className='date-end'>Vencimento: {task.date_end == null ? "Sem vencimento" : format(new Date(task.date_end), 'dd/MM/yyyy HH:mm')}</p>
                                 </div>
+
+                                <div >
+                                    <p className='task-priority'>Prioridade: {task.priority == 0 ? "Sem prioridade" : task.priority == 1 ? "Baixa" : task.priority == 2 ? "Media" : "Alta"} </p>
+                                </div>
+
                             </div>
                         </div>
                     ))}

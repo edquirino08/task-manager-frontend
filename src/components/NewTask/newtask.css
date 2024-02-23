@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
 
-.new-task-container {
+.new-task-container-new-task {
     position: fixed;
     background-color: rgba(0, 0, 0, 0.5);
     top: 0;
@@ -13,7 +13,7 @@
     z-index: 1000;
 }
 
-.pop-up-content {
+.pop-up-content-new-task {
     background-color: white;
     padding: 30px;
     border-radius: 5px;
@@ -39,7 +39,7 @@
 
 input {
     margin: 20px 20px 20px 0;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 400;
     font-family: 'Roboto Condensed', sans-serif;
 }
@@ -47,14 +47,14 @@ input {
 input::placeholder {
     margin: 20px 20px 20px 0;
     font-weight: 400;
+    font-size: 15px;
     font-family: 'Roboto Condensed', sans-serif;
 }
 
 select {
     margin: 20px 20px 20px 0;
     height: 40px;
-    font-size: 13px;
-    background-color: #f8f8f8;
+    font-size: 15px;
     border: 1px solid #bbb;
     border-radius: 4px;
     box-shadow: 0 4px 6px rgb(125, 149, 230);
@@ -62,7 +62,11 @@ select {
     transition: border-color 0.2s, box-shadow 0.2s;
     color: #666666;
     font-family: 'Roboto Condensed', sans-serif;
+    width: 100%;
+}
 
+select::placeholder {
+    font-size: 15px;
 }
 
 button {
