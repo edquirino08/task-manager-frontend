@@ -80,7 +80,7 @@ const Signup = () => {
                     <PasswordInput className='passwordInput' value={password} onChange={handlePasswordChange} placeholder='Senha' />
                 </div>
                 {showErrorSignup && <a className='error-signup'>{errorSignup}</a>}
-                {true && (<Popup email={email} />)}
+                {popUpSuccess && (<Popup email={email} />)}
                 <Button
                     value={'Cadastrar'}
                     type={'submit'}
