@@ -26,7 +26,8 @@
   align-items: center;
   margin-bottom: 10px;
   position: relative;
-
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .paper-pending,
@@ -38,9 +39,11 @@
   flex-direction: column;
 }
 
-.task-content p{
+.task-content p {
   font-weight: 500;
-  color: #000000c9;
+  color: #000000c8;
+  width: 300px;
+
 }
 
 .paper-pending {
@@ -49,7 +52,6 @@
   padding-top: 50px;
   margin-bottom: 20px;
   background-color: #fff;
-  box-shadow: 0 4px 6px rgb(232, 232, 59);
   border-radius: 5px;
 }
 
@@ -59,7 +61,6 @@
   padding-top: 50px;
   margin-bottom: 20px;
   background-color: #fff;
-  box-shadow: 0 4px 6px rgba(125, 149, 230, 0.467);
   border-radius: 5px;
 }
 
@@ -70,7 +71,6 @@
   padding-top: 50px;
   margin-bottom: 20px;
   background-color: #fff;
-  box-shadow: 0 4px 6px rgba(132, 233, 112, 0.811);
   border-radius: 5px;
 }
 
@@ -94,7 +94,15 @@ h3 {
   border: 0.5px solid #cccccc75;
   box-shadow: 0 4px 6px rgb(206, 207, 203);
   border-radius: 5px;
+  cursor: pointer;
+  height: 100px;
+  transition: transform 0.2s ease;
 }
+
+.pending-task:hover {
+  transform: translateY(-3px);
+}
+
 
 .in-progress-task {
   padding: 15px;
@@ -102,7 +110,16 @@ h3 {
   border: 0.5px solid #cccccc75;
   box-shadow: 0 4px 6px rgb(206, 207, 203);
   border-radius: 5px;
+  cursor: pointer;
+  height: 100px;
+  transition: transform 0.2s ease;
 }
+
+
+.in-progress-task:hover {
+  transform: translateY(-3px);
+}
+
 
 .done-task {
   padding: 15px;
@@ -110,9 +127,21 @@ h3 {
   border: 0.5px solid #cccccc75;
   box-shadow: 0 4px 6px rgb(206, 207, 203);
   border-radius: 5px;
+  cursor: pointer;
+  height: 100px;
+  transition: transform 0.2s ease;
+}
+
+.done-task:hover {
+  transform: translateY(-3px);
 }
 
 .date-end {
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+.task-priority {
   margin-top: 5px;
   font-size: 15px;
 }

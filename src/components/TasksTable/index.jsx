@@ -4,12 +4,14 @@ import Search from '../Search';
 import './taskstable.css';
 import { format } from 'date-fns';
 import NewTask from '../NewTask';
+import TaskDetails from '../TaskDetails';
 
 const TasksTable = () => {
     const [tasks, setTasks] = React.useState([]);
     const userData = JSON.parse(localStorage.getItem('userData'));
     const [search, setSearch] = React.useState('');
     const [newTask, setNewTask] = React.useState(false);
+    const [openTask, setOpenTask] = React.useState(false);
 
     React.useEffect(() => {
         if (userData) {
@@ -41,6 +43,10 @@ const TasksTable = () => {
         setNewTask(false);
     };
 
+    const handeleOpenTask = () => {
+        setOpenTask(true);
+    };
+
     return (
         <div>
             <div className="search-and-button-container">
@@ -55,7 +61,9 @@ const TasksTable = () => {
                     </h3>
                     {tasks.filter(task => task.task.toLowerCase().includes(search.toLowerCase())).map(task => task.status === 0 && (
                         <div className='pending-task' key={task.id}>
-                            <div className='task-content'>
+                            {openTask && <TaskDetails />}
+                            <div className='task-content'
+                                onClick={handeleOpenTask}>
                                 <div>
                                     <p className='task'>{task.task}</p>
                                 </div>
@@ -77,6 +85,7 @@ const TasksTable = () => {
                     </h3>
                     {tasks.filter(task => task.task.toLowerCase().includes(search.toLowerCase())).map(task => task.status === 1 && (
                         <div className='in-progress-task' key={task.id}>
+                            {openTask && <TaskDetails />}
                             <div className='task-content'>
                                 <div>
                                     <p className='task'>{task.task}</p>
@@ -99,6 +108,7 @@ const TasksTable = () => {
                     </h3>
                     {tasks.filter(task => task.task.toLowerCase().includes(search.toLowerCase())).map(task => task.status === 2 && (
                         <div className='done-task' key={task.id}>
+                            {openTask && <TaskDetails />}
                             <div className='task-content'>
                                 <div>
                                     <p className='task'>{task.task}</p>
