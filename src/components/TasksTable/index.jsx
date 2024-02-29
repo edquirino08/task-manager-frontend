@@ -94,17 +94,18 @@ const TasksTable = () => {
                     </h3>
                     {tasks.filter(task => task.task.toLowerCase().includes(search.toLowerCase())).map(task => task.status === 1 && (
                         <div className='in-progress-task' key={task.id}>
-                            {openTask && <TaskDetails />}
-                            <div className='task-content'>
+                            <div className='task-content'
+                                onClick={() => handeleOpenTask(task)}>
                                 <div>
                                     <p className='task'>{task.task}</p>
                                 </div>
                                 <div className="dates-container">
                                     <div>
-                                        <p className='date-create'>Criação: {format(new Date(task.date_create), 'dd/MM/yyyy HH:mm')}</p>
+                                        <p className='date-end'>Vencimento: {task.date_end == null ? "Sem vencimento" : format(new Date(task.date_end), 'dd/MM/yyyy HH:mm')}</p>
                                     </div>
-                                    <div>
-                                        <p className='date-mod'>Última mod: {format(new Date(task.status_date), 'dd/MM/yyyy HH:mm')}</p>
+
+                                    <div >
+                                        <p className='task-priority'>Prioridade: {task.priority == 0 ? "Sem prioridade" : task.priority == 1 ? "Baixa" : task.priority == 2 ? "Media" : "Alta"} </p>
                                     </div>
                                 </div>
                             </div>
@@ -117,17 +118,18 @@ const TasksTable = () => {
                     </h3>
                     {tasks.filter(task => task.task.toLowerCase().includes(search.toLowerCase())).map(task => task.status === 2 && (
                         <div className='done-task' key={task.id}>
-                            {openTask && <TaskDetails />}
-                            <div className='task-content'>
+                            <div className='task-content'
+                                onClick={() => handeleOpenTask(task)}>
                                 <div>
                                     <p className='task'>{task.task}</p>
                                 </div>
                                 <div className="dates-container">
                                     <div>
-                                        <p className='date-create'>Criação: {format(new Date(task.date_create), 'dd/MM/yyyy HH:mm')}</p>
+                                        <p className='date-end'>Vencimento: {task.date_end == null ? "Sem vencimento" : format(new Date(task.date_end), 'dd/MM/yyyy HH:mm')}</p>
                                     </div>
-                                    <div>
-                                        <p className='date-mod'>Última mod: {format(new Date(task.status_date), 'dd/MM/yyyy HH:mm')}</p>
+
+                                    <div >
+                                        <p className='task-priority'>Prioridade: {task.priority == 0 ? "Sem prioridade" : task.priority == 1 ? "Baixa" : task.priority == 2 ? "Media" : "Alta"} </p>
                                     </div>
                                 </div>
                             </div>
