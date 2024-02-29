@@ -51,10 +51,6 @@ const NewTask = ({ onClose }) => {
         setServerError(false);
     };
 
-    React.useEffect(() => {
-    }, [priority]);
-
-
     const handleChangeDateTime = (date) => {
         setSelectedDateTime(date);
         setServerError(false);

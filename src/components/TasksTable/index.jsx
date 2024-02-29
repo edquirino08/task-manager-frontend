@@ -12,6 +12,8 @@ const TasksTable = () => {
     const [search, setSearch] = React.useState('');
     const [newTask, setNewTask] = React.useState(false);
     const [openTask, setOpenTask] = React.useState(false);
+    const [taskDetail, setTaskDetail] = React.useState(null);
+
 
     React.useEffect(() => {
         if (userData) {
@@ -43,8 +45,15 @@ const TasksTable = () => {
         setNewTask(false);
     };
 
-    const handeleOpenTask = () => {
+    const handeleOpenTask = (task) => {
+        setTaskDetail(task);
         setOpenTask(true);
+        console.log('Olha as tarefas:', taskDetail);
+
+    };
+
+    const handleCloseTask = () => {
+        setOpenTask(false);
     };
 
     return (
@@ -59,11 +68,11 @@ const TasksTable = () => {
                     <h3>
                         Pendente
                     </h3>
+                    {openTask && <TaskDetails taskDetail={taskDetail} onClose={handleCloseTask} />}
                     {tasks.filter(task => task.task.toLowerCase().includes(search.toLowerCase())).map(task => task.status === 0 && (
                         <div className='pending-task' key={task.id}>
-                            {openTask && <TaskDetails />}
                             <div className='task-content'
-                                onClick={handeleOpenTask}>
+                                onClick={() => handeleOpenTask(task)}>
                                 <div>
                                     <p className='task'>{task.task}</p>
                                 </div>
