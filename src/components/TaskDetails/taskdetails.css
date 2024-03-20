@@ -71,9 +71,14 @@ input:disabled {
     margin-bottom: 30px;
 }
 
-.label-date{
+.label-date {
     margin-top: 10px;
     margin-bottom: -10px;
     font-size: 15px;
     font-weight: 500;
+}
+
+.edit-error {
+    color: red;
+    margin-left: 30px;
 }

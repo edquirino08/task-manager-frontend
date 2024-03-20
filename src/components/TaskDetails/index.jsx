@@ -5,12 +5,15 @@ import { format } from 'date-fns';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import pt from 'date-fns/locale/pt';
+import api from '../../services/Api';
+import LoadingSpinner from '../LoadingSpinner';
 
 // eslint-disable-next-line react/prop-types
 const TaskDetails = ({ taskDetail, onClose }) => {
 
     const popUpRef = React.useRef(null);
     const task = taskDetail;
+    const idTask = task.id;
     const [description, setDescription] = React.useState(task.description);
     const [priority, setPriority] = React.useState(task.priority);
     const [status, setStatus] = React.useState(task.status);
@@ -18,6 +21,9 @@ const TaskDetails = ({ taskDetail, onClose }) => {
     const statusDate = format(new Date(task.status_date), 'dd/MM/yyyy HH:mm');
     const dateEnd = task.date_end == undefined ? 'Sem vencimento' : format(new Date(task.date_end), 'dd/MM/yyyy HH:mm');
     const [selectedDateTime, setSelectedDateTime] = React.useState(task.date_end == undefined ? null : task.date_end);
+    const [showError, setShowError] = React.useState(true);
+    const [error, setError] = React.useState('');
+    const [isReloading, setIsReloading] = React.useState(false);
 
     React.useEffect(() => {
         const handleClickOutside = (event) => {
@@ -43,22 +49,46 @@ const TaskDetails = ({ taskDetail, onClose }) => {
     };
 
     const handleChangeDescription = (value) => {
+        setShowError(false);
         setDescription(value);
     }
 
     const handleChangePriority = (e) => {
+        setShowError(false);
         setPriority(e.target.value);
     };
 
     const handleChangeStatus = (e) => {
+        setShowError(false);
         setStatus(e.target.value);
     };
 
     const handleChangeDateTime = (date) => {
+        setShowError(false);
         setSelectedDateTime(date);
     };
 
-    const handleEditTask = () => {
+    const handleEditTask = async () => {
+        setIsReloading(true);
+        const task = {
+            id: idTask,
+            description: description,
+            status: status,
+            priority: priority,
+            date_end: selectedDateTime
+        }
+
+        try {
+            await api.put('/editTask', task);
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        } catch (err) {
+            setIsReloading(false);
+            setShowError(true);
+            setError('Erro ao editar tarefa.')
+        }
+
 
     };
 
@@ -132,7 +162,10 @@ const TaskDetails = ({ taskDetail, onClose }) => {
                 <div className='buttons-container'>
                     <button className='cancel' onClick={handleClose}>Cancelar</button>
                     <button className='cancel' onClick={handleEditTask}>Salvar</button>
+                    {isReloading && <LoadingSpinner />}
                 </div>
+
+                {showError && <a className='edit-error'>{error}</a>}
 
             </div>
         </div>
