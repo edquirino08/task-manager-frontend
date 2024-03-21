@@ -22,7 +22,7 @@ const TaskDetails = ({ taskDetail, onClose }) => {
     const dateEnd = task.date_end == undefined ? 'Sem vencimento' : format(new Date(task.date_end), 'dd/MM/yyyy HH:mm');
     const [selectedDateTime, setSelectedDateTime] = React.useState(task.date_end == undefined ? null : task.date_end);
     const [showError, setShowError] = React.useState(true);
-    const [error, setError] = React.useState('');
+    const [errorMessage, setErrorMessage] = React.useState('');
     const [isReloading, setIsReloading] = React.useState(false);
 
     React.useEffect(() => {
@@ -84,11 +84,34 @@ const TaskDetails = ({ taskDetail, onClose }) => {
                 window.location.reload();
             }, 2000);
         } catch (err) {
+            const { error } = err.response.data;
+            
+            switch (error) {
+                case 1:
+                case 5:
+                case 6:
+                    setErrorMessage('Erro ao editar tarefa, entre em contato com o suporte.')
+                    break;
+
+                case 2:
+                    setErrorMessage('Erro! Descrição inválida.')
+                    break;
+
+                case 3:
+                    setErrorMessage('Erro! Status inválido.')
+                    break;
+
+                case 4:
+                    setErrorMessage('Erro! Prioridade inválida.')
+                    break;
+
+                default:
+                    setErrorMessage('Erro ao editar tarefa, entre em contato com o suporte.')
+                    break;
+            }
             setIsReloading(false);
             setShowError(true);
-            setError('Erro ao editar tarefa.')
         }
-
 
     };
 
@@ -158,14 +181,13 @@ const TaskDetails = ({ taskDetail, onClose }) => {
                     timeInputLabel="Hora:"
                     className='date-picker'
                 />
-
+                {showError && <a className='edit-error'>{errorMessage}</a>}
                 <div className='buttons-container'>
                     <button className='cancel' onClick={handleClose}>Cancelar</button>
                     <button className='cancel' onClick={handleEditTask}>Salvar</button>
                     {isReloading && <LoadingSpinner />}
                 </div>
 
-                {showError && <a className='edit-error'>{error}</a>}
 
             </div>
         </div>

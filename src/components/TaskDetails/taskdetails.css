@@ -78,7 +78,11 @@ input:disabled {
     font-weight: 500;
 }
 
+
+
 .edit-error {
+    margin-top: 10px;
+    margin-bottom: 10px;
     color: red;
     margin-left: 30px;
 }
